@@ -27,17 +27,38 @@ const Navigation = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Khaled-Fouad', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/khaled-fouad/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Khaled-Fouad-DEV', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/khaled-fouad-96a981285/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:khaled.fouadv9@gmail.com', label: 'Email' },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Close mobile menu first
     setIsOpen(false);
+    
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        // Get the element's position and account for fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for navbar
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback: try scrolling to the element directly
+        const fallbackElement = document.querySelector(href);
+        if (fallbackElement) {
+          fallbackElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    }, 150);
   };
 
   return (
@@ -69,7 +90,10 @@ const Navigation = () => {
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
@@ -127,8 +151,11 @@ const Navigation = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                    }}
+                    className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2 w-full"
                   >
                     {item.name}
                   </motion.button>

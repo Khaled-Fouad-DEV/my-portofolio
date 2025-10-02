@@ -48,7 +48,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section-padding bg-dark-900">
+    <section id="projects" className="section-padding bg-dark-900 overflow-hidden">
       <div className="container">
         <motion.div
           ref={ref}
@@ -78,7 +78,7 @@ const Projects = () => {
               >
                 <div className="glass-effect rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-500 h-full">
                   {/* Project Image */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-80 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -181,31 +181,21 @@ const Projects = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex space-x-3 mt-6">
+                    <div className="mt-6">
                       {project.githubUrl && (
                         <motion.a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg transition-colors duration-200 text-sm font-medium"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full flex items-center justify-center space-x-3 px-6 py-3 bg-gradient-to-r from-primary-500/10 to-primary-600/10 hover:from-primary-500/20 hover:to-primary-600/20 border border-primary-500/20 hover:border-primary-500/40 rounded-xl transition-all duration-300 text-sm font-semibold group"
                         >
-                          <Code className="w-4 h-4" />
-                          <span>Code</span>
-                        </motion.a>
-                      )}
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-primary-500/10 hover:bg-primary-500/20 text-primary-400 rounded-lg transition-colors duration-200 text-sm font-medium"
-                        >
-                          <Globe className="w-4 h-4" />
-                          <span>Live Demo</span>
+                          <Code className="w-5 h-5 text-primary-400 group-hover:text-primary-300 transition-colors duration-300" />
+                          <span className="text-primary-300 group-hover:text-primary-200 transition-colors duration-300">
+                            View Source Code
+                          </span>
+                          <ExternalLink className="w-4 h-4 text-primary-400/60 group-hover:text-primary-300/80 transition-colors duration-300" />
                         </motion.a>
                       )}
                     </div>
@@ -224,7 +214,7 @@ const Projects = () => {
                 Check out my GitHub profile for more repositories and contributions.
               </p>
               <motion.a
-                href="https://github.com/Khaled-Fouad"
+                href="https://github.com/Khaled-Fouad-DEV"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

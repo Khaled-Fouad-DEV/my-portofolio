@@ -13,12 +13,12 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      href: 'https://github.com/Khaled-Fouad',
+      href: 'https://github.com/Khaled-Fouad-DEV',
       icon: Github,
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/khaled-fouad/',
+      href: 'https://www.linkedin.com/in/khaled-fouad-96a981285/',
       icon: Linkedin,
     },
     {

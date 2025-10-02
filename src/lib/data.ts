@@ -6,9 +6,9 @@ export const projects: Project[] = [
     title: 'Locally Dashboard',
     description: 'Admin web application for managing products, refunds, and appointments',
     longDescription: 'A comprehensive admin dashboard built with Vue.js that allows businesses to manage their products, handle refunds, and schedule appointments. Features data visualization with Chart.js and Excel export functionality.',
-    image: '/landing.png',
+    image: '/locally.png',
     technologies: ['Vue.js', 'JavaScript', 'HTML', 'CSS', 'Chart.js', 'Axios'],
-    githubUrl: 'https://github.com/Khaled-Fouad',
+    githubUrl: 'https://github.com/Khaled-Fouad-DEV/locally-dashboard',
     liveUrl: '#',
     features: [
       'Product management system',
@@ -24,9 +24,9 @@ export const projects: Project[] = [
     title: 'Go4Retails',
     description: 'Real estate web and mobile application with real-time features',
     longDescription: 'A comprehensive real estate platform built with Vue.js and Ionic that enables users to create posts, comment, chat in real-time, and supports multiple languages. Features dark/light mode and responsive design.',
-    image: '/responsive.png',
+    image: '/go4retails.jpg',
     technologies: ['Vue.js', 'Ionic', 'TailwindCSS', 'WebSockets', 'JavaScript'],
-    githubUrl: 'https://github.com/Khaled-Fouad',
+    githubUrl: 'https://github.com/Khaled-Fouad-DEV/go4retails-website',
     liveUrl: '#',
     features: [
       'Post creation and management',
@@ -38,21 +38,21 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'hala-agency',
-    title: 'Hala Agency',
-    description: 'Web application with dynamic features and interactive dashboard',
-    longDescription: 'A feature-rich web application built with React that includes an articles section, tour package management, and comprehensive data tables. Features an interactive dashboard with charts for key metrics visualization and role-based access control.',
-    image: '/javascript.png',
+    id: 'travel-agency',
+    title: 'Travel Agency',
+    description: 'Web application for travel booking and tour management',
+    longDescription: 'A comprehensive travel agency platform built with React that includes tour package management, booking system, and interactive features. Features an intuitive dashboard for managing travel services and customer bookings.',
+    image: '/travel-agency.jpg',
     technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Axios'],
-    githubUrl: 'https://github.com/Khaled-Fouad',
+    githubUrl: 'https://github.com/Khaled-Fouad-DEV/Travel-Agency',
     liveUrl: '#',
     features: [
-      'Articles management system',
       'Tour package management',
-      'Interactive dashboard with charts',
-      'User and branch management',
-      'Role-based access control',
-      'Responsive UI with Tailwind CSS'
+      'Booking system',
+      'Interactive dashboard',
+      'User management',
+      'Responsive design',
+      'Modern UI with Tailwind CSS'
     ]
   }
 ];
@@ -70,7 +70,7 @@ export const experiences: Experience[] = [
       'Contributed to improving frontend workflows using TailwindCSS'
     ],
     technologies: ['Vue.js', 'Nuxt.js', 'TailwindCSS'],
-    current: true
+    current: false
   },
   {
     id: 'freelancer',
@@ -78,12 +78,12 @@ export const experiences: Experience[] = [
     position: 'Front-End Developer',
     duration: 'Jan 2024 - Present',
     description: [
-      'Built responsive web applications using Vue, HTML, CSS, JavaScript, and TailwindCSS',
+      'Built responsive web applications using Vue, React, Next.js, HTML, CSS, JavaScript, and TailwindCSS',
       'Focused on component-based architecture and repository design pattern',
       'Delivered clean, modular code with an emphasis on performance',
       'Independently gathered requirements and deployed web solutions'
     ],
-    technologies: ['Vue.js', 'HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
+    technologies: ['Vue.js', 'React', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
     current: true
   }
 ];
@@ -101,11 +101,13 @@ export const skills: Skill[] = [
   { name: 'Next.js', level: 80, category: 'frontend', icon: 'nextjs' },
   { name: 'Nuxt.js', level: 85, category: 'frontend', icon: 'nuxt' },
   { name: 'Ionic', level: 75, category: 'frontend', icon: 'ionic' },
+  { name: 'Redux', level: 75, category: 'frontend', icon: 'redux' },
   
   // Styling
   { name: 'Tailwind CSS', level: 90, category: 'frontend', icon: 'tailwind' },
   { name: 'Bootstrap', level: 80, category: 'frontend', icon: 'bootstrap' },
   { name: 'SASS', level: 75, category: 'frontend', icon: 'sass' },
+  { name: 'shadcn/ui', level: 70, category: 'frontend', icon: 'shadcn' },
   
   // Tools
   { name: 'Git', level: 85, category: 'tools', icon: 'git' },
@@ -117,12 +119,12 @@ export const skills: Skill[] = [
 export const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
-    url: 'https://github.com/Khaled-Fouad',
+    url: 'https://github.com/Khaled-Fouad-DEV',
     icon: 'github'
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/khaled-fouad/',
+    url: 'https://www.linkedin.com/in/khaled-fouad-96a981285/',
     icon: 'linkedin'
   },
   {
@@ -149,6 +151,6 @@ export const personalInfo = {
   certification: {
     title: 'ITI Scholarship',
     description: 'Achieved first place in group for outstanding technical and collaborative skills. Built multiple interactive web applications using modern front-end tools and libraries.',
-    skills: ['Git', 'Responsive Design', 'UI/UX Principles', 'Version Control']
+    skills: ['Git', 'Responsive Design', 'TailwindCSS', 'JavaScript', 'HTML', 'CSS', 'UI/UX Principles', 'Version Control']
   }
 };

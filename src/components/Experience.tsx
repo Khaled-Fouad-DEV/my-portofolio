@@ -58,7 +58,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="section-padding bg-dark-800/50">
+    <section id="experience" className="section-padding bg-dark-800/50 overflow-hidden">
       <div className="container">
         <motion.div
           ref={ref}
@@ -107,7 +107,7 @@ const Experience = () => {
                         initial={{ scale: 0 }}
                         animate={inView ? { scale: 1 } : { scale: 0 }}
                         transition={{ delay: 0.7 + index * 0.3, duration: 0.3 }}
-                        className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center"
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center"
                       >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                       </motion.div>
@@ -128,7 +128,7 @@ const Experience = () => {
                         <div className="flex items-center space-x-2 text-primary-400 font-medium">
                           <span>{experience.company}</span>
                           {experience.current && (
-                            <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">
+                            <span className="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded-full">
                               Current
                             </span>
                           )}
