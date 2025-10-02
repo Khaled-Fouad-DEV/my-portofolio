@@ -87,9 +87,9 @@ const Contact = () => {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
             >
-              Ready to transform your ideas into reality? I'm here to help you build something amazing. 
-              Whether it's a new website, web application, or you need consultation on your project, 
-              let's discuss how we can work together to achieve your goals.
+              Ready to transform your ideas into reality? I&apos;m here to help you build something amazing. 
+              Whether it&apos;s a new website, web application, or you need consultation on your project, 
+              let&apos;s discuss how we can work together to achieve your goals.
             </motion.p>
           </motion.div>
 
