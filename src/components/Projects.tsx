@@ -85,38 +85,6 @@ const Projects = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4 flex space-x-3">
-                        {project.githubUrl && (
-                          <motion.a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors duration-200"
-                            aria-label="View GitHub"
-                          >
-                            <Github className="w-5 h-5 text-white" />
-                          </motion.a>
-                        )}
-                        {project.liveUrl && (
-                          <motion.a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors duration-200"
-                            aria-label="View Live Demo"
-                          >
-                            <ExternalLink className="w-5 h-5 text-white" />
-                          </motion.a>
-                        )}
-                      </div>
-                    </div>
 
                     {/* Project Number */}
                     <div className="absolute top-4 left-4 w-10 h-10 bg-primary-500/20 backdrop-blur-sm rounded-full flex items-center justify-center">
