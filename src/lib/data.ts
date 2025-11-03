@@ -69,7 +69,7 @@ export const experiences: Experience[] = [
       'Ensured best practices in code quality and design systems',
       'Contributed to improving frontend workflows using TailwindCSS'
     ],
-    technologies: ['Vue.js', 'Nuxt.js', 'TailwindCSS'],
+    technologies: ['Vue.js', 'Nuxt.js', 'TailwindCSS', 'Node.js', 'MongoDB'],
     current: false
   },
   {
@@ -78,12 +78,13 @@ export const experiences: Experience[] = [
     position: 'Front-End Developer',
     duration: 'Jan 2024 - Present',
     description: [
-      'Built responsive web applications using Vue, React, Next.js, HTML, CSS, JavaScript, and TailwindCSS',
+      'Built responsive full-stack web applications using Vue, React, Next.js, Node.js, HTML, CSS, JavaScript, and TailwindCSS',
+      'Developed RESTful APIs and database solutions using MongoDB and MySQL',
       'Focused on component-based architecture and repository design pattern',
-      'Delivered clean, modular code with an emphasis on performance',
-      'Independently gathered requirements and deployed web solutions'
+      'Delivered clean, modular code with an emphasis on performance and scalability',
+      'Independently gathered requirements and deployed complete web solutions from frontend to backend'
     ],
-    technologies: ['Vue.js', 'React', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
+    technologies: ['Vue.js', 'React', 'Next.js', 'Node.js', 'MongoDB', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
     current: true
   }
 ];
@@ -108,6 +109,11 @@ export const skills: Skill[] = [
   { name: 'Bootstrap', level: 80, category: 'frontend', icon: 'bootstrap' },
   { name: 'SASS', level: 75, category: 'frontend', icon: 'sass' },
   { name: 'shadcn/ui', level: 70, category: 'frontend', icon: 'shadcn' },
+  
+  // Backend Technologies
+  { name: 'Node.js', level: 85, category: 'backend', icon: 'nodejs' },
+  { name: 'MongoDB', level: 80, category: 'backend', icon: 'mongodb' },
+  { name: 'MySQL', level: 75, category: 'backend', icon: 'mysql' },
   
   // Tools
   { name: 'Git', level: 85, category: 'tools', icon: 'git' },
@@ -136,12 +142,12 @@ export const socialLinks: SocialLink[] = [
 
 export const personalInfo = {
   name: 'Khaled Fouad',
-  title: 'Frontend Developer',
+  title: 'Full Stack Developer',
   subtitle: '2+ Years Experience',
   email: 'khaled.fouadv9@gmail.com',
   phone: '+20 01099292491',
   location: 'Egypt',
-  bio: 'Passionate frontend developer with 2+ years of experience building modern web applications. Specialized in Vue.js, React, and modern JavaScript frameworks. Committed to creating clean, efficient, and user-friendly interfaces.',
+  bio: 'Passionate full stack developer with 2+ years of experience building modern web applications from frontend to backend. Specialized in Vue.js, React, Next.js, Node.js, and modern JavaScript frameworks. Experienced with MongoDB and MySQL databases. Committed to creating clean, efficient, and scalable full-stack solutions.',
   education: {
     degree: 'B.Sc. in Computer Science',
     university: 'Port Said University',

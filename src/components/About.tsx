@@ -120,13 +120,14 @@ const About = () => {
                       {personalInfo.bio}
                     </p>
                     <p>
-                      I specialize in building responsive web applications using modern frameworks like Vue.js, React, and Next.js. 
+                      I specialize in building responsive full-stack web applications using modern frameworks like Vue.js, React, Next.js, and Node.js. 
+                      On the backend, I work with MongoDB and MySQL to design and implement efficient database solutions and RESTful APIs. 
                       My approach combines technical expertise with a keen eye for design, ensuring that every project not only 
-                      functions flawlessly but also provides an exceptional user experience.
+                      functions flawlessly end-to-end but also provides an exceptional user experience and scalable architecture.
                     </p>
                     <p>
                       When I&apos;m not coding, I enjoy staying up-to-date with the latest web technologies, contributing to open-source 
-                      projects, and continuously learning new skills to enhance my development capabilities.
+                      projects, and continuously learning new skills to enhance my full-stack development capabilities.
                     </p>
                   </div>
                 </div>
@@ -214,8 +215,8 @@ const About = () => {
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
                   { 
-                    title: 'Frontend Development', 
-                    description: 'Building responsive and interactive user interfaces with modern frameworks',
+                    title: 'Full Stack Development', 
+                    description: 'Building end-to-end web applications from frontend UI to backend APIs and databases',
                     icon: '🎨'
                   },
                   { 
@@ -224,13 +225,13 @@ const About = () => {
                     icon: '🧩'
                   },
                   { 
-                    title: 'Performance Optimization', 
-                    description: 'Ensuring fast loading times and smooth user experiences',
+                    title: 'Backend & Databases', 
+                    description: 'Developing RESTful APIs with Node.js and managing data with MongoDB and MySQL',
                     icon: '⚡'
                   },
                   { 
                     title: 'Modern Frameworks', 
-                    description: 'Working with Vue.js, React, Next.js, and cutting-edge technologies',
+                    description: 'Working with Vue.js, React, Next.js, Node.js, and cutting-edge technologies',
                     icon: '🚀'
                   },
                 ].map((skill, index) => (

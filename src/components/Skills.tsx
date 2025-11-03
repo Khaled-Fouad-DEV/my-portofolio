@@ -78,6 +78,9 @@ const Skills = () => {
       github: '/GitHub.png',
       webstorm: '/WebStorm.png',
       figma: '/Figma.png',
+      nodejs: '/Node.js.png',
+      mongodb: '/MongoDB.png',
+      mysql: '/mysql-icon.png',
     };
     return iconMap[iconName] || '/default-icon.png';
   };
@@ -85,6 +88,7 @@ const Skills = () => {
   const skillCategories = {
     languages: skills.filter(skill => skill.category === 'languages'),
     frontend: skills.filter(skill => skill.category === 'frontend'),
+    backend: skills.filter(skill => skill.category === 'backend'),
     tools: skills.filter(skill => skill.category === 'tools'),
   };
 
@@ -104,7 +108,7 @@ const Skills = () => {
               My <span className="gradient-text">Skills</span>
             </h2>
             <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              A comprehensive overview of the technologies and tools I work with to create amazing web experiences.
+              A comprehensive overview of the technologies and tools I work with to create amazing full-stack web applications and experiences.
             </p>
           </motion.div>
 
@@ -116,6 +120,7 @@ const Skills = () => {
                   <h3 className="text-2xl font-bold mb-2 capitalize">
                     {category === 'languages' ? 'Programming Languages' : 
                      category === 'frontend' ? 'Frontend Technologies' : 
+                     category === 'backend' ? 'Backend Technologies' :
                      'Tools & Others'}
                   </h3>
                   <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>

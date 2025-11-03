@@ -209,7 +209,7 @@ const Hero = () => {
               >
                 <Image
                   src="/MyImage.jpg"
-                  alt="Khaled Fouad - Frontend Developer"
+                  alt="Khaled Fouad - Full Stack Developer"
                   fill
                   className="object-cover"
                   priority
