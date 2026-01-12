@@ -2,6 +2,26 @@ import { Project, Experience, Skill, SocialLink } from '@/types';
 
 export const projects: Project[] = [
   {
+    id: 'locally-ecommerce',
+    title: 'Locally E-Commerce',
+    description: 'Modern e-commerce platform with multilingual support and optimized performance',
+    longDescription: 'A full-featured e-commerce platform built with Vue.js and Nuxt.js, delivering a seamless shopping experience. Features include bilingual support (Arabic/English), lazy loading for optimal performance, Pinia state management, and a modern UI built with Tailwind CSS. The platform offers product browsing, category management, brand showcases, and responsive design for all devices.',
+    image: '/locally.png',
+    technologies: ['Vue.js', 'Nuxt.js', 'TypeScript', 'Tailwind CSS', 'Pinia', 'Lazy Loading'],
+    githubUrl: '#',
+    liveUrl: 'https://locallyeg.com/',
+    features: [
+      'Full e-commerce functionality with product catalog',
+      'Bilingual support (Arabic/English)',
+      'Optimized performance with lazy loading',
+      'Pinia state management for efficient data handling',
+      'Modern UI with Tailwind CSS',
+      'Responsive design for all devices',
+      'Brand showcases and category management',
+      'TypeScript for type-safe development'
+    ]
+  },
+  {
     id: 'locally-dashboard',
     title: 'Locally Dashboard',
     description: 'Admin web application for managing products, refunds, and appointments',
@@ -59,6 +79,20 @@ export const projects: Project[] = [
 
 export const experiences: Experience[] = [
   {
+    id: 'current-position',
+    company: 'Insuretekk',
+    position: 'Mid-Level Full Stack Developer',
+    duration: 'Present',
+    description: [
+      'Developing and maintaining full-stack web applications using Angular, Node.js, and Ionic',
+      'Building scalable and efficient solutions across frontend and backend architectures',
+      'Mentoring a small team of junior developers, providing guidance on best practices and code reviews',
+      'Collaborating with cross-functional teams to deliver high-quality software solutions'
+    ],
+    technologies: ['Angular', 'Node.js', 'Ionic', 'TypeScript', 'JavaScript'],
+    current: true
+  },
+  {
     id: 'teleoceans',
     company: 'Teleoceans',
     position: 'Front-End Developer',
@@ -85,7 +119,7 @@ export const experiences: Experience[] = [
       'Independently gathered requirements and deployed complete web solutions from frontend to backend'
     ],
     technologies: ['Vue.js', 'React', 'Next.js', 'Node.js', 'MongoDB', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
-    current: true
+    current: false
   }
 ];
 
