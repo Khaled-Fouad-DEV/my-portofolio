@@ -149,8 +149,24 @@ const Projects = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="mt-6">
-                      {project.githubUrl && (
+                    <div className="mt-6 space-y-3">
+                      {project.liveUrl && project.liveUrl !== '#' && (
+                        <motion.a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full flex items-center justify-center space-x-3 px-6 py-3 bg-gradient-to-r from-primary-500/10 to-primary-600/10 hover:from-primary-500/20 hover:to-primary-600/20 border border-primary-500/20 hover:border-primary-500/40 rounded-xl transition-all duration-300 text-sm font-semibold group"
+                        >
+                          <Globe className="w-5 h-5 text-primary-400 group-hover:text-primary-300 transition-colors duration-300" />
+                          <span className="text-primary-300 group-hover:text-primary-200 transition-colors duration-300">
+                            {project.id === 'locally-ecommerce' ? 'Visit Website' : 'View Live Site'}
+                          </span>
+                          <ExternalLink className="w-4 h-4 text-primary-400/60 group-hover:text-primary-300/80 transition-colors duration-300" />
+                        </motion.a>
+                      )}
+                      {project.githubUrl && project.githubUrl !== '#' && (
                         <motion.a
                           href={project.githubUrl}
                           target="_blank"
