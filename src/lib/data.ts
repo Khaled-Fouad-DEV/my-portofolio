@@ -22,59 +22,62 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'locally-dashboard',
-    title: 'Locally Dashboard',
-    description: 'Admin web application for managing products, refunds, and appointments',
-    longDescription: 'A comprehensive admin dashboard built with Vue.js that allows businesses to manage their products, handle refunds, and schedule appointments. Features data visualization with Chart.js and Excel export functionality.',
-    image: '/locally.png',
-    technologies: ['Vue.js', 'JavaScript', 'HTML', 'CSS', 'Chart.js', 'Axios'],
-    githubUrl: 'https://github.com/Khaled-Fouad-DEV/locally-dashboard',
-    liveUrl: '#',
+    id: 'course-finisher',
+    title: 'Course Finisher',
+    description: 'Full-stack mobile app that lets you study YouTube courses in-app with smart reminders to stay consistent',
+    longDescription: 'A full-stack mobile application built with Ionic, Angular, and Node.js that integrates the YouTube API to bring video courses directly into the app for a focused study experience. Features built-in YouTube search so users can find and add courses without leaving the app. Uses Firebase Cloud Messaging to send push notifications reminding users if they skip a day without studying, helping them stay on track and build consistent learning habits.',
+    image: '/course-finisher.png',
+    technologies: ['Ionic', 'Angular', 'Node.js', 'YouTube API', 'Firebase', 'TypeScript'],
+    liveUrl: 'https://course-finisher.vercel.app/',
     features: [
-      'Product management system',
-      'Refund processing',
-      'Appointment scheduling',
-      'Data visualization with Chart.js',
-      'Excel export functionality',
-      'Responsive design'
+      'YouTube video playback directly inside the app',
+      'YouTube search integration for finding courses',
+      'Firebase push notifications for daily study reminders',
+      'Skip-day detection to keep users accountable',
+      'Full-stack architecture with Node.js backend',
+      'Mobile-first responsive design with Ionic',
+      'Course progress tracking',
+      'Clean study-focused interface'
     ]
   },
   {
-    id: 'go4retails',
-    title: 'Go4Retails',
-    description: 'Real estate web and mobile application with real-time features',
-    longDescription: 'A comprehensive real estate platform built with Vue.js and Ionic that enables users to create posts, comment, chat in real-time, and supports multiple languages. Features dark/light mode and responsive design.',
-    image: '/go4retails.jpg',
-    technologies: ['Vue.js', 'Ionic', 'TailwindCSS', 'WebSockets', 'JavaScript'],
-    githubUrl: 'https://github.com/Khaled-Fouad-DEV/go4retails-website',
-    liveUrl: '#',
+    id: 'meeting-room-booking',
+    title: 'Enterprise Meeting Scheduler',
+    description: 'Full-stack room booking system for managing meeting rooms across large buildings with a reactive calendar',
+    longDescription: 'A full-stack enterprise meeting room booking application built with React, Node.js, and MySQL. Designed for organizations with large buildings containing multiple meeting rooms. Admins can control room availability (active/inactive), while users book meetings through an interactive reactive calendar with a visual timeline. Built with clean architecture principles, featuring Redux Toolkit for state management, Material-UI components, and FullCalendar for the scheduling interface.',
+    image: '/book-meeting.png',
+    technologies: ['React', 'Node.js', 'MySQL', 'TypeScript', 'Redux Toolkit', 'Material-UI'],
+    githubUrl: 'https://github.com/youssefhemdan217/FMRB_Dev',
     features: [
-      'Post creation and management',
-      'Real-time commenting system',
-      'Live chat functionality',
-      'Multilingual support',
-      'Dark/light mode toggle',
-      'Mobile responsive design'
+      'Reactive calendar with timeline for booking meetings',
+      'Room control panel to activate/deactivate rooms',
+      'Room browsing and filtering',
+      'Full CRUD booking management',
+      'Real-time room availability tracking',
+      'Analytics dashboard',
+      'Responsive design for all devices',
+      'Clean architecture with monorepo structure'
     ]
   },
   {
-    id: 'travel-agency',
-    title: 'Travel Agency',
-    description: 'Web application for travel booking and tour management',
-    longDescription: 'A comprehensive travel agency platform built with React that includes tour package management, booking system, and interactive features. Features an intuitive dashboard for managing travel services and customer bookings.',
-    image: '/travel-agency.jpg',
-    technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Axios'],
-    githubUrl: 'https://github.com/Khaled-Fouad-DEV/Travel-Agency',
-    liveUrl: '#',
+    id: 'docs-reader',
+    title: 'Docs Reader',
+    description: 'Open-source documentation platform that turns Markdown files into a beautiful, searchable website',
+    longDescription: 'A comprehensive documentation platform built with React and Docusaurus that transforms Markdown files into organized, browsable documentation pages — similar to Docker or React docs. Features a clean sidebar navigation, full-text search, syntax-highlighted code blocks, and multiple doc sections including Getting Started guides, API References, and project-specific documentation. Supports 6+ projects with 50+ pages of structured content.',
+    image: '/document app.png',
+    technologies: ['React', 'Docusaurus', 'Markdown', 'JavaScript', 'CSS'],
+    liveUrl: 'https://docs-reader.vercel.app/',
     features: [
-      'Tour package management',
-      'Booking system',
-      'Interactive dashboard',
-      'User management',
-      'Responsive design',
-      'Modern UI with Tailwind CSS'
+      'Markdown to website conversion with live rendering',
+      'Sidebar navigation with organized doc sections',
+      'Full-text search across all documentation',
+      'Syntax-highlighted code blocks',
+      'Multiple project documentation support',
+      'Responsive design with dark theme',
+      'Getting Started, Guides, and API Reference sections',
+      'Deployed on Vercel for fast global access'
     ]
-  }
+  },
 ];
 
 export const experiences: Experience[] = [
