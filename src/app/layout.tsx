@@ -12,7 +12,8 @@ const description =
   'Senior Frontend Engineer in Port Said, Egypt. Leads frontend at Insuretekk and East Port Said National University: design systems, component architecture and bilingual English/Arabic web and mobile apps in React, Angular and Ionic.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://khaled-fouad.vercel.app'),
+  // The live Vercel URL (the repo's homepage). Change it here if a custom domain is added.
+  metadataBase: new URL('https://my-portofolio-eight-olive.vercel.app'),
   title,
   description,
   keywords: [
