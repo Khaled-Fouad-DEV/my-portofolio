@@ -70,7 +70,9 @@ removed (first-load JS 147 → 110 kB).
 Checked: lint, `tsc`, build; production screenshots at 1280 / 375 / 320 in light and dark,
 no horizontal scroll, theme toggle persists, resume PDF serves.
 
-Open: GitHub/LinkedIn handles to confirm; step 6 design/a11y review; Arabic not in scope.
+GitHub (`Khaled-Fouad-DEV`) and LinkedIn links confirmed by Khaled.
+
+Open: step 6 design/a11y review; Arabic not in scope.
 
 ## Steps
 
