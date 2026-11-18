@@ -72,7 +72,7 @@ no horizontal scroll, theme toggle persists, resume PDF serves.
 
 GitHub (`Khaled-Fouad-DEV`) and LinkedIn links confirmed by Khaled.
 
-Open: step 6 design/a11y review; Arabic not in scope.
+Design & a11y review done: docs/design/review-2026-11-18.md. Arabic not in scope.
 
 ## Steps
 

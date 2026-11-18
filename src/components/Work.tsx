@@ -16,7 +16,7 @@ function Meta({ c }: { c: CaseStudy }) {
 function Metrics({ c }: { c: CaseStudy }) {
   if (!c.metrics?.length) return null;
   return (
-    <dl className="my-2 grid grid-cols-3 gap-4">
+    <dl className="my-2 grid grid-cols-3 gap-3 sm:gap-4">
       {c.metrics.map((m) => (
         <div key={m.label}>
           <dt className="font-serif text-[30px] leading-none text-accent md:text-[40px]">{m.value}</dt>
@@ -57,9 +57,10 @@ function Details({ c }: { c: CaseStudy }) {
           href={c.link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-medium text-accent hover:text-accent-hover"
+          className="inline-flex min-h-11 items-center gap-1 self-start font-medium text-accent hover:text-accent-hover"
         >
           {c.link.label} <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden />
+          <span className="sr-only"> (opens in a new tab)</span>
         </a>
       )}
     </>

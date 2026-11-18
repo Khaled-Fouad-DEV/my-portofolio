@@ -9,19 +9,28 @@ import ThemeToggle from './ThemeToggle';
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const firstLink = useRef<HTMLAnchorElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    firstLink.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    // Wait a frame so this render's `visible` class has applied before focusing.
+    const frame = requestAnimationFrame(() => firstLink.current?.focus());
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      toggle.current?.focus();
+    };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('keydown', onKey);
+    };
   }, [open]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper">
       <div className="wrap flex h-[72px] items-center justify-between gap-6">
-        <a href="#top" className="font-serif text-[26px] leading-none text-ink">
+        <a href="#top" className="inline-flex min-h-11 items-center font-serif text-[26px] leading-none text-ink">
           {personalInfo.name}
         </a>
 
@@ -43,6 +52,7 @@ export default function Navigation() {
             Resume
           </a>
           <button
+            ref={toggle}
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink md:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -56,13 +66,16 @@ export default function Navigation() {
       </div>
 
       {/* Always mounted so it can fade out; `invisible` takes it out of the tab order
-          and the accessibility tree once closed. */}
+          and the accessibility tree once closed. Visibility only transitions on close:
+          on open it must flip at once, or the first link can't take focus. */}
       <nav
         id="mobile-menu"
         aria-label="Sections"
         className={cn(
-          'absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-line bg-paper transition-[opacity,transform,visibility] duration-200 ease-out md:hidden',
-          open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0',
+          'absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto border-y border-line bg-paper duration-200 ease-out md:hidden',
+          open
+            ? 'visible translate-y-0 opacity-100 transition-[opacity,transform]'
+            : 'invisible -translate-y-2 opacity-0 transition-[opacity,transform,visibility]',
         )}
       >
         <ul className="wrap flex flex-col py-3">

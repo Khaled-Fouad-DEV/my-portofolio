@@ -51,6 +51,7 @@ export default function About() {
               </a>
               <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 <Linkedin size={16} strokeWidth={1.75} aria-hidden /> LinkedIn
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>
           </div>
