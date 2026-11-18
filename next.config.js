@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/avif', 'image/webp'],
   },
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    optimizePackageImports: ['lucide-react'],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

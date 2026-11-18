@@ -1,99 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Brand tokens. Every colour on the site comes from here; components use the Tailwind
+ * names mapped in tailwind.config.ts (bg-paper, text-muted, border-line, ...).
+ * Source of truth: docs/plans/portfolio-revamp.md and the Magnific brand kit.
+ * The art colours in scripts/art.mjs follow the same light/dark pairs.
+ */
 @layer base {
-  * {
-    @apply border-gray-700;
+  :root {
+    --paper: #fafaf7;
+    --surface: #ffffff;
+    --ink: #111412;
+    --muted: #5c625f;
+    --line: #e4e4de;
+    --accent: #0f6e68;
+    --accent-hover: #0a4f4b;
+    --accent-soft: #e3f0ee;
+    --accent-ink: #0a4f4b;
+
+    /* The contact band is dark in both themes. */
+    --inverse: #111412;
+    --inverse-fg: #edeeea;
+    --inverse-muted: #9aa19d;
+    --inverse-line: #2e3431;
+    --inverse-accent: #5fc2b5;
+
+    color-scheme: light;
   }
-  
-  body {
-    @apply bg-dark-900 text-white font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
+
+  .dark {
+    --paper: #0e1110;
+    --surface: #161a19;
+    --ink: #edeeea;
+    --muted: #9aa19d;
+    --line: #262b29;
+    --accent: #5fc2b5;
+    --accent-hover: #86d4c9;
+    --accent-soft: #15302d;
+    --accent-ink: #9fe0d6;
+
+    --inverse: #161a19;
+
+    color-scheme: dark;
   }
-  
+
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+    }
   }
 }
 
 @layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  /* One gutter for every section. Sections add only vertical padding (py-*, pt-*):
+     a `padding` shorthand on top of .wrap would zero the gutter. */
+  .wrap {
+    @apply mx-auto w-full max-w-[1160px] px-6 sm:px-10;
   }
-  
-  .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.08em] text-muted;
   }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+
+  .btn {
+    @apply inline-flex h-11 items-center justify-center gap-2 rounded-full border px-5 text-[15px] font-medium transition-colors;
   }
-  
-  .glass-effect {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
-  }
-  
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:from-primary-600 hover:to-primary-700 hover:scale-105 hover:shadow-lg hover:shadow-primary-500/25;
+    @apply border-ink bg-ink text-paper hover:border-accent hover:bg-accent;
   }
-  
-  .btn-secondary {
-    @apply border border-primary-500 text-primary-400 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-500 hover:text-white hover:scale-105;
-  }
-  
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+  .btn-ghost {
+    @apply border-line text-ink hover:border-ink;
   }
 }
 
 @layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .hero-art {
+    animation:
+      art-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
+      art-float 7s ease-in-out 0.9s infinite;
   }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .rise {
+    animation: art-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes art-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-dark-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500;
-}
-
-/* Selection color */
-::selection {
-  @apply bg-primary-500/30 text-white;
-}
-
-/* Focus styles */
-*:focus-visible {
-  @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-dark-900;
+@keyframes art-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

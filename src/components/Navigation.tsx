@@ -1,190 +1,90 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib/cn';
+import { navLinks, personalInfo } from '@/lib/data';
+import ThemeToggle from './ThemeToggle';
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
+  const firstLink = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/Khaled-Fouad-DEV', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/khaled-fouad-96a981285/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:khaled.fouadv9@gmail.com', label: 'Email' },
-  ];
-
-  const scrollToSection = (href: string) => {
-    // Close mobile menu first
-    setIsOpen(false);
-    
-    // Small delay to ensure menu closes before scrolling
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        // Get the element's position and account for fixed navbar
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for navbar
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      } else {
-        // Fallback: try scrolling to the element directly
-        const fallbackElement = document.querySelector(href);
-        if (fallbackElement) {
-          fallbackElement.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }
-    }, 150);
-  };
+    if (!open) return;
+    firstLink.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-dark-900/95 backdrop-blur-md border-b border-white/10' 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
-          >
-            <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">K</span>
-            </div>
-            <span className="text-xl font-bold gradient-text">Khaled Fouad</span>
-          </motion.div>
+    <header className="sticky top-0 z-40 border-b border-line bg-paper">
+      <div className="wrap flex h-[72px] items-center justify-between gap-6">
+        <a href="#top" className="font-serif text-[26px] leading-none text-ink">
+          {personalInfo.name}
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </motion.button>
+        <nav aria-label="Sections" className="hidden md:block">
+          <ul className="flex gap-7 text-sm">
+            {navLinks.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="text-muted transition-colors hover:text-ink">
+                  {l.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
+        </nav>
 
-          {/* Social Links */}
-          <div className="hidden md:flex items-center space-x-4">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200"
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5 text-gray-300 hover:text-white" />
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200"
-            aria-label="Toggle menu"
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <a href={personalInfo.resume} download className="btn btn-primary hidden sm:inline-flex">
+            Resume
+          </a>
+          <button
+            type="button"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink md:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((o) => !o)}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </motion.button>
+            {open ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-dark-900/95 backdrop-blur-md border-b border-white/10"
-          >
-            <div className="container mx-auto px-4 py-4">
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(item.href);
-                    }}
-                    className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2 w-full"
-                  >
-                    {item.name}
-                  </motion.button>
-                ))}
-                
-                {/* Mobile Social Links */}
-                <div className="flex items-center space-x-4 pt-4 border-t border-white/10">
-                  {socialLinks.map((social) => (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200"
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-5 h-5 text-gray-300 hover:text-white" />
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
+      {/* Always mounted so it can fade out; `invisible` takes it out of the tab order
+          and the accessibility tree once closed. */}
+      <nav
+        id="mobile-menu"
+        aria-label="Sections"
+        className={cn(
+          'absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-line bg-paper transition-[opacity,transform,visibility] duration-200 ease-out md:hidden',
+          open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0',
         )}
-      </AnimatePresence>
-    </motion.nav>
+      >
+        <ul className="wrap flex flex-col py-3">
+          {navLinks.map((l, i) => (
+            <li key={l.href}>
+              <a
+                ref={i === 0 ? firstLink : undefined}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="flex h-12 items-center border-b border-line font-serif text-2xl text-ink"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li className="pt-4">
+            <a href={personalInfo.resume} download className="btn btn-primary w-full" onClick={() => setOpen(false)}>
+              Download resume
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
-};
-
-export default Navigation;
+}

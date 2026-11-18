@@ -1,260 +1,60 @@
-'use client';
+import { ArrowRight, Download } from 'lucide-react';
+import { dailyStack, heroFacts, personalInfo } from '@/lib/data';
+import Art from './Art';
+import { TechIcon } from './TechIcon';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react';
-import { personalInfo } from '@/lib/data';
-
-const Hero = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.querySelector('#about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
+export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-      </div>
+    <section className="wrap grid items-center gap-8 pb-10 pt-12 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:pb-20 lg:pt-24">
+      <div className="rise">
+        <p className="eyebrow">
+          {personalInfo.title} · {personalInfo.location}
+        </p>
+        <h1 className="mb-6 mt-5 font-serif text-[46px] leading-[1.02] tracking-[-0.01em] sm:text-6xl lg:text-[76px]">
+          {personalInfo.headline}
+        </h1>
+        <p className="mb-9 max-w-[560px] text-[17px] leading-relaxed text-muted lg:text-[19px]">{personalInfo.lead}</p>
 
-      {/* Floating Tech Icons - Hidden on mobile */}
-      <motion.div
-        variants={floatingVariants}
-        animate="animate"
-        className="hidden sm:flex absolute top-20 left-4 lg:left-10 w-12 h-12 lg:w-16 lg:h-16 bg-primary-500/10 rounded-full items-center justify-center backdrop-blur-sm"
-      >
-        <span className="text-lg lg:text-2xl">⚛️</span>
-      </motion.div>
-      
-      <motion.div
-        variants={floatingVariants}
-        animate="animate"
-        className="hidden sm:flex absolute top-40 right-4 lg:right-20 w-8 h-8 lg:w-12 lg:h-12 bg-primary-500/10 rounded-full items-center justify-center backdrop-blur-sm"
-        style={{ animationDelay: '1s' }}
-      >
-        <span className="text-sm lg:text-xl">💚</span>
-      </motion.div>
-      
-      <motion.div
-        variants={floatingVariants}
-        animate="animate"
-        className="hidden sm:flex absolute bottom-40 left-4 lg:left-20 w-10 h-10 lg:w-14 lg:h-14 bg-primary-500/10 rounded-full items-center justify-center backdrop-blur-sm"
-        style={{ animationDelay: '2s' }}
-      >
-        <span className="text-sm lg:text-xl">⚡</span>
-      </motion.div>
+        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href="#work" className="btn btn-primary">
+            View selected work <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
+          </a>
+          <a href={personalInfo.resume} download className="btn btn-ghost">
+            Download resume <Download size={16} strokeWidth={1.75} aria-hidden />
+          </a>
+        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-12 lg:py-0"
-        >
-          {/* Left Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
-            <motion.h1 
-              variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+        <dl className="grid border-y border-line sm:grid-cols-3">
+          {heroFacts.map((f, i) => (
+            <div
+              key={f.value}
+              className={i === 0 ? 'py-5' : 'border-t border-line py-5 sm:border-s sm:border-t-0 sm:ps-6'}
             >
-              Hi, I&apos;m{' '}
-              <span className="gradient-text">
-                {personalInfo.name}
-              </span>
-            </motion.h1>
-
-            <motion.h2 
-              variants={itemVariants}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 sm:mb-4 text-gray-300"
-            >
-              {personalInfo.title}
-            </motion.h2>
-
-            <motion.p 
-              variants={itemVariants}
-              className="text-base sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
-            >
-              {personalInfo.bio}
-            </motion.p>
-
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={scrollToAbout}
-                className="btn-primary flex items-center justify-center space-x-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
-              >
-                <span>View My Work</span>
-                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
-              
-              <motion.a
-                href="/Khaled Fouad Resume -FS-.pdf"
-                download="Khaled Fouad Resume -FS-.pdf"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-secondary flex items-center justify-center space-x-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
-              >
-                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>Download CV</span>
-              </motion.a>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start space-x-4 sm:space-x-6"
-            >
-              <motion.a
-                href="https://github.com/Khaled-Fouad-DEV"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 sm:p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300 hover:text-white" />
-              </motion.a>
-              
-              <motion.a
-                href="https://www.linkedin.com/in/khaled-fouad-96a981285/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 sm:p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300 hover:text-white" />
-              </motion.a>
-              
-              <motion.a
-                href="mailto:khaled.fouadv9@gmail.com"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 sm:p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300 hover:text-white" />
-              </motion.a>
-            </motion.div>
-          </div>
-
-          {/* Right Content - Profile Image */}
-          <motion.div 
-            variants={imageVariants}
-            className="flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0"
-          >
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-primary-600/20 rounded-full blur-3xl scale-110"></div>
-              
-              {/* Image Container */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary-500/20 shadow-2xl"
-              >
-                <Image
-                  src="/MyImage.jpg"
-                  alt="Khaled Fouad - Full Stack Developer"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent"></div>
-              </motion.div>
-
-              {/* Floating Elements around Image - Hidden on mobile */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="hidden sm:block absolute -top-4 -right-4 w-16 h-16 md:w-24 md:h-24 border-2 border-primary-500/30 rounded-full"
-              ></motion.div>
-              
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="hidden sm:block absolute -bottom-4 -left-4 w-12 h-12 md:w-16 md:h-16 border-2 border-primary-500/30 rounded-full"
-              ></motion.div>
+              <dt className="font-serif text-[28px] leading-tight">{f.value}</dt>
+              <dd className="text-sm text-muted">{f.label}</dd>
             </div>
-          </motion.div>
-        </motion.div>
+          ))}
+        </dl>
+
+        <div className="mt-7">
+          <p className="eyebrow">Daily stack</p>
+          <ul className="mt-3 flex flex-wrap gap-x-[22px] gap-y-2.5">
+            {dailyStack.map((t) => (
+              <li
+                key={t.name}
+                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+              >
+                <TechIcon id={t.icon} className="size-[18px]" />
+                {t.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Scroll Indicator - Hidden on mobile */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.button
-          onClick={scrollToAbout}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors duration-300"
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="w-6 h-6 text-gray-400" />
-        </motion.button>
-      </motion.div>
+      <div className="hero-art">
+        <Art name="hero" />
+      </div>
     </section>
   );
-};
-
-export default Hero;
+}
